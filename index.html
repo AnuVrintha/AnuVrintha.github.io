@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#FFFFFF">
 <title>Anuvrintha Ramachandran – Java Backend Developer</title>
 <meta name="description" content="Portfolio of Anuvrintha Ramachandran, Java Backend Developer and ServiceNow Analyst.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,22 +22,10 @@
     --accent-soft: #CFE1F4;
     --rule: #DDE6EF;
     --shadow: 0 1px 2px rgba(30, 42, 56, 0.05), 0 6px 20px rgba(47, 111, 176, 0.07);
-    color-scheme: light;
+    color-scheme: light only;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #111A24; --surface: #172331; --tint: #1B2C3F; --tint-2: #1A2E28;
-      --text: #E4EBF2; --muted: #9DACBB; --accent: #8DBDF0; --accent-soft: #24405E;
-      --rule: #263646; --shadow: none; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #111A24; --surface: #172331; --tint: #1B2C3F; --tint-2: #1A2E28;
-    --text: #E4EBF2; --muted: #9DACBB; --accent: #8DBDF0; --accent-soft: #24405E;
-    --rule: #263646; --shadow: none; color-scheme: dark;
   }
   html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -48,6 +38,9 @@
     font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
     font-size: 17px;
     line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-wrap: break-word;
   }
   a { color: var(--accent); text-underline-offset: 3px; }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
@@ -158,11 +151,31 @@
   footer p { margin: 0; }
 
   @media (max-width: 720px) {
-    nav ul { display: none; }
-    .hero .wrap { padding-top: 48px; padding-bottom: 44px; }
-    .two-col { grid-template-columns: 1fr; }
-    .skill-row { grid-template-columns: 1fr; gap: 6px; }
-    .project { padding: 20px; }
+    body { font-size: 16px; }
+    nav .inner { padding: 10px 16px; flex-wrap: wrap; gap: 6px 16px; }
+    nav ul { gap: 16px; font-size: 0.9rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none; max-width: 100%; }
+    nav ul::-webkit-scrollbar { display: none; }
+    .wrap { padding: 0 16px; }
+    .hero .wrap { padding-top: 40px; padding-bottom: 36px; }
+    .hero h1 { font-size: 2rem; }
+    .hero .role { font-size: 1.05rem; }
+    section { padding: 40px 0 4px; }
+    h2 { font-size: 1.3rem; margin-bottom: 18px; }
+    .timeline { padding-left: 24px; }
+    .job::before { left: -24px; }
+    .job { padding-bottom: 24px; }
+    .two-col { grid-template-columns: 1fr; gap: 16px; }
+    .skills { padding: 4px 18px; }
+    .skill-row { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
+    .project { padding: 18px 18px 18px 16px; border-radius: 12px; }
+    .panel { padding: 18px; border-radius: 12px; }
+    ul.points { padding-left: 1.05em; }
+    footer { margin-top: 48px; }
+    footer .wrap { padding-top: 24px; padding-bottom: 32px; }
+  }
+  @media (max-width: 380px) {
+    nav .brand { width: 100%; }
+    .hero h1 { font-size: 1.75rem; }
   }
 </style>
 </head>
