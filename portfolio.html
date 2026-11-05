@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anuvrintha Ramachandran – Java Backend Developer</title>
+<meta name="description" content="Portfolio of Anuvrintha Ramachandran, Java Backend Developer and ServiceNow Analyst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7FAFD;
+    --surface: #FFFFFF;
+    --tint: #EAF2FB;
+    --tint-2: #EEF7F2;
+    --text: #1E2A38;
+    --muted: #5B6B7C;
+    --accent: #2F6FB0;
+    --accent-soft: #CFE1F4;
+    --rule: #DDE6EF;
+    --shadow: 0 1px 2px rgba(30, 42, 56, 0.05), 0 6px 20px rgba(47, 111, 176, 0.07);
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111A24; --surface: #172331; --tint: #1B2C3F; --tint-2: #1A2E28;
+      --text: #E4EBF2; --muted: #9DACBB; --accent: #8DBDF0; --accent-soft: #24405E;
+      --rule: #263646; --shadow: none; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111A24; --surface: #172331; --tint: #1B2C3F; --tint-2: #1A2E28;
+    --text: #E4EBF2; --muted: #9DACBB; --accent: #8DBDF0; --accent-soft: #24405E;
+    --rule: #263646; --shadow: none; color-scheme: dark;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  *, *::before, *::after { box-sizing: inherit; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* Top navigation */
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 10; background: var(--surface);
+  }
+  nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .inner {
+    max-width: 880px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  nav .brand { font-weight: 700; color: var(--text); text-decoration: none; }
+  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+  nav ul a { color: var(--muted); text-decoration: none; }
+  nav ul a:hover { color: var(--accent); }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* Intro */
+  .hero {
+    background: var(--tint);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .wrap { padding-top: 72px; padding-bottom: 64px; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+  .hero .role { font-size: 1.2rem; font-weight: 500; color: var(--accent); margin: 0; }
+  .hero .intro { max-width: 58ch; margin: 0 0 28px; }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 0; }
+  .contact a, .contact span {
+    display: inline-block; padding: 7px 16px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--accent-soft);
+    color: var(--text); text-decoration: none; font-size: 0.93rem;
+  }
+  .contact a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Sections */
+  section { padding: 56px 0 8px; }
+  h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 24px; }
+  h3 { font-size: 1.08rem; font-weight: 600; margin: 0; }
+  .meta { color: var(--muted); font-size: 0.94rem; margin: 2px 0 12px; }
+  ul.points { margin: 0; padding-left: 1.15em; }
+  ul.points li { margin-bottom: 7px; max-width: 70ch; }
+  ul.points li::marker { color: var(--accent); }
+
+  /* Experience timeline: the roles are in date order */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--accent-soft);
+  }
+  .job { position: relative; padding-bottom: 32px; }
+  .job::before {
+    content: ""; position: absolute; left: -28px; top: 7px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface); border: 3px solid var(--accent);
+  }
+  .job .when {
+    display: inline-block; font-size: 0.85rem; font-weight: 500;
+    color: var(--accent); background: var(--tint); padding: 2px 10px; border-radius: 6px;
+    margin-bottom: 6px;
+  }
+
+  /* Projects */
+  .projects { display: grid; gap: 20px; }
+  .project {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 24px 26px; box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-soft);
+  }
+  .project .what { color: var(--muted); margin: 4px 0 14px; }
+
+  /* Skills as soft chips */
+  .skills {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 8px 26px;
+  }
+  .skill-row {
+    display: grid; grid-template-columns: 170px 1fr; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .skill-row:last-child { border-bottom: 0; }
+  .skill-row .label { font-weight: 600; color: var(--accent); }
+  .chips { display: inline; list-style: none; margin: 0; padding: 0; }
+  .chips li { display: inline; }
+  .chips li:not(:last-child)::after { content: ", "; }
+
+  /* Education and achievements */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .panel {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 22px 24px; box-shadow: var(--shadow);
+  }
+  .panel h3 + .meta { margin-bottom: 16px; }
+
+  footer { margin: 64px 0 0; background: var(--tint); border-top: 1px solid var(--rule); }
+  footer .wrap { padding-top: 32px; padding-bottom: 40px; color: var(--muted); }
+  footer p { margin: 0; }
+
+  @media (max-width: 720px) {
+    nav ul { display: none; }
+    .hero .wrap { padding-top: 48px; padding-bottom: 44px; }
+    .two-col { grid-template-columns: 1fr; }
+    .skill-row { grid-template-columns: 1fr; gap: 6px; }
+    .project { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <div class="inner">
+    <a class="brand" href="#top">Anuvrintha R.</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Anuvrintha Ramachandran</h1>
+    <p class="role">Java Backend Developer and ServiceNow Analyst</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <div class="timeline">
+      <div class="job">
+        <span class="when">Apr 2026 – Present</span>
+        <h3>Java Backend Developer</h3>
+        <p class="meta">CubeSimple, Chennai</p>
+        <ul class="points">
+          <li>Developed and maintained REST APIs in Java 17 and Spring Boot across 6 modules of a production service for telecom order analytics.</li>
+          <li>Deployed applications to UAT and Production on Kubernetes (GKE) through GitHub Actions CI/CD, and maintained configuration for each environment.</li>
+          <li>Supported production releases by checking each deployment and fixing issues as they came up, and tracked tasks and bugs in Jira.</li>
+          <li>Joined client calls to gather requirements, and reviewed and merged team pull requests.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <span class="when">Oct 2025 – Mar 2026</span>
+        <h3>ServiceNow Analyst</h3>
+        <p class="meta">CubeSimple, Chennai</p>
+        <ul class="points">
+          <li>Resolved incidents assigned to the team’s queue in ServiceNow, investigating each order issue from the incident details.</li>
+          <li>Ran Flow Designer flows on custom ServiceNow tables to clear order fallouts and remove failed records.</li>
+          <li>Identified and removed incorrect or failed telecom orders, keeping order data accurate for downstream processes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="proj-h">
+    <h2 id="proj-h">Projects</h2>
+    <div class="projects">
+      <article class="project">
+        <h3>WatchTower – Order Tracking Dashboard</h3>
+        <p class="what">A dashboard that helps teams track telecom orders by their due date.</p>
+        <ul class="points">
+          <li>Built APIs that group orders into completed, cancelled, no action and in-jeopardy, with a drill-down view and order search.</li>
+          <li>Added dynamic filters by network type, order action, account type and drop type, and Excel export generated in the backend.</li>
+          <li>Configured service account keys and Workload Identity (WLI) for secure BigQuery access, and set up a new GCP billing project.</li>
+          <li>Set up a separate pre-prod version that reads from BigQuery view tables, used to test new queries before release.</li>
+        </ul>
+      </article>
+      <article class="project">
+        <h3>Sales Lifecycle Analysis and Admin Page</h3>
+        <p class="what">A platform that shows why sales orders were missed, with an admin page to manage its data.</p>
+        <ul class="points">
+          <li>Worked on the logic that classifies missed sales by reason, such as customer miss, facility issue or duplicate order.</li>
+          <li>Worked on the admin page that lets admins upload data files, make a data batch live and roll back to an earlier one.</li>
+          <li>Set up the initial modules and the Cloud Storage bucket for production.</li>
+        </ul>
+      </article>
+      <article class="project">
+        <h3>Cloud Access and Environment Support</h3>
+        <p class="what">Access, data and configuration work that keeps the team’s applications running.</p>
+        <ul class="points">
+          <li>Managed access requests, including BigQuery access at the Workload Identity service account level, GitHub and Citrix access.</li>
+          <li>Created BigQuery tables when they did not exist, and handled BigQuery and Cloud Storage bucket tasks.</li>
+          <li>Added, removed and updated environment variables on Kubernetes deployments using kubectl.</li>
+          <li>Created and updated API proxies in Apigee, configured auth, quota and rate-limit policies, and managed API keys.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <div class="skills">
+      <div class="skill-row"><span class="label">Languages</span><ul class="chips"><li>Java</li><li>JavaScript</li><li>MySQL</li></ul></div>
+      <div class="skill-row"><span class="label">Frameworks</span><ul class="chips"><li>Spring Boot</li><li>React</li></ul></div>
+      <div class="skill-row"><span class="label">Cloud and data</span><ul class="chips"><li>Google Cloud Platform</li><li>Google BigQuery</li><li>Google Cloud Storage</li></ul></div>
+      <div class="skill-row"><span class="label">DevOps</span><ul class="chips"><li>Kubernetes (GKE)</li><li>GitHub Actions (CI/CD)</li></ul></div>
+      <div class="skill-row"><span class="label">API and testing</span><ul class="chips"><li>Apigee</li><li>Postman</li></ul></div>
+      <div class="skill-row"><span class="label">Collaboration</span><ul class="chips"><li>Atlassian Jira</li><li>Confluence</li></ul></div>
+      <div class="skill-row"><span class="label">Tools</span><ul class="chips"><li>ServiceNow</li><li>Flow Designer</li><li>IntelliJ IDEA</li><li>VS Code</li><li>Eclipse</li><li>Figma</li></ul></div>
+      <div class="skill-row"><span class="label">AI tools</span><ul class="chips"><li>Claude Cowork</li><li>Claude Code</li><li>Google Antigravity</li></ul></div>
+    </div>
+  </section>
+
+  <section id="education" aria-labelledby="edu-h">
+    <div class="two-col">
+      <div class="panel">
+        <h2 id="edu-h">Education</h2>
+        <h3>B.Tech (Hons.) Information Technology</h3>
+        <p class="meta">Dr. Mahalingam College of Engineering and Technology, Coimbatore<br>2021 – 2025, CGPA 8.7</p>
+        <h3>HSC (92%) and SSLC (93%)</h3>
+        <p class="meta">Jai Saradha Matriculation Higher Secondary School, Tiruppur<br>2021 and 2019</p>
+      </div>
+      <div class="panel">
+        <h2>Achievements</h2>
+        <ul class="points">
+          <li>Earned NCC B and C Certificates with an “A” grade.</li>
+          <li>Served as Leading Flight Cadet in the NCC.</li>
+          <li>Attended two Combined Annual Training Camps (CATC).</li>
+          <li>Dispersed 13,000+ seed balls in Annamalai Tiger Reserve, Pollachi, as part of an NCC initiative.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Open to Java backend and ServiceNow roles. Reach me at <a href="mailto:anuramv2003@gmail.com">anuramv2003@gmail.com</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
